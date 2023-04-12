@@ -4,7 +4,7 @@
   import ImprovementIcon from "$lib/icons/ImprovementIcon.svelte";
   import NewIcon from "$lib/icons/NewIcon.svelte";
   import { marked } from "marked";
-  import { PUBLIC_API_URL } from "$env/static/public";
+
   export let update;
 
   let contentClass =
@@ -42,7 +42,7 @@
     {#if update.image}
       <img
         class="aspect-[2.75/1] w-full overflow-hidden rounded-lg bg-gray-100"
-        src={`${PUBLIC_API_URL}/assets/${update.image}?format=webp&?width=640`}
+        src={`${'https://cms.samespace.com'}/assets/${update.image}?format=webp&?width=640`}
         alt={update.title}
       />
     {/if}
