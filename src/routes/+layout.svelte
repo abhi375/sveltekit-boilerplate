@@ -1,53 +1,45 @@
 <script>
-	import Header from './Header.svelte';
-	import './styles.css';
+	import '../fonts.css';
+	import '../app.css';
+	import Header from '$lib/components/Header.svelte';
+	import UpdatesSidebar from '$lib/components/UpdatesSidebar.svelte';
+	import { showSideNav, showUpdatesSidebar } from '$lib/stores/global-store';
+
+	import SideNav from '$lib/components/SideNav.svelte';
 </script>
 
-<div class="app">
-	<Header />
+{#if $showUpdatesSidebar}
+	<UpdatesSidebar />
+{/if}
 
-	<main>
+{#if $showSideNav}
+	<SideNav />
+{/if}
+
+<Header />
+
+<main class={`pt-16 min-h-[calc(100vh_-_64px)] flex flex-col h-full transform`}>
+	<div class="transition-container">
 		<slot />
-	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
-</div>
+	</div>
+</main>
 
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
+	:root {
+		--content-v-padding: 40px;
+		--content-h-padding: 160px;
+		--content-width: 720px;
 	}
 
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
+	.transition-container {
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr;
+		height: 100%;
 	}
 
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
+	.transition-container > * {
+		grid-row: 1;
+		grid-column: 1;
 	}
 </style>
