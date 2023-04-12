@@ -64,7 +64,7 @@
         </div>
         <p class="text-xl font-semibold mt-4 mb-2">No Result</p>
         <p class="text-lg font-serif opacity-70">
-          Sorry, no matches were found. Please try another search.
+          Sorry, no matches were foaund. Please try another search.
         </p>
       </div>
     {/if}
